@@ -1,0 +1,14 @@
+<template name="imagesView">
+	<div class="imageView">
+
+	{{images.length}}
+
+	{{#each images}}
+		<div>
+			<a href="{{this.url}}" target="_blank">
+				<img src="{{this.url}}" class="thumbnail">
+			</a>
+		</div>
+	{{/each}}
+	</div>
+</template>
