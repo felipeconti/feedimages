@@ -4,6 +4,14 @@
 	{{images.length}}
 
 	{{#each images}}
+		<p><b>Original name:</b> {{this.name}}</p>
+		<p><b>Original extension:</b> {{this.extension}}</p>
+		<p><b>Original type:</b> {{this.type}}</p>
+		<p><b>Original size:</b> {{this.size}}</p>
+		<p><b>Thumbnail name:</b> {{this.name store="thumbs"}}</p>
+		<p><b>Thumbnail extension:</b> {{this.extension store="thumbs"}}</p>
+		<p><b>Thumbnail type:</b> {{this.type store="thumbs"}}</p>
+		<p><b>Thumbnail size:</b> {{this.size store="thumbs"}}</p>
 		<div>
 			<a href="{{this.url}}" target="_blank">
 				<img src="{{this.url}}" class="thumbnail">
