@@ -34,16 +34,11 @@ Template.carousel2.helpers({
 		return Images.find(); // Where Images is an FS.Collection instance
 	},
 	addImage: function(){
-		if (!carousel) carousel = $('#carousel');
-
-		console.log('Adicionando...')
-		console.log('Antes de adicionar - currentSlide: '+ carousel.slick('slickCurrentSlide'));
-
-		carousel.slick('slickPause');
-		carousel.slick('slickAdd', '<div><img src="'+this.url()+'" height="50%" width="50%"></div>');
-		carousel.slick('slickPlay');
-
-		console.log('Depois de adicionar - currentSlide: '+ carousel.slick('slickCurrentSlide'));
-
+		if (this.isUploaded() && this.url()){
+			if (!carousel) carousel = $('#carousel');
+			carousel.slick('slickPause');
+			carousel.slick('slickAdd', '<div><img src="'+this.url()+'" height="20%" width="20%"></div>');
+			carousel.slick('slickPlay');
+		}
 	}
 });
