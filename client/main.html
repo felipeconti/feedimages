@@ -1,11 +1,8 @@
-<head>
-  <title>Feed Image</title>
-</head>
+<template name="main">
+	<head>
+	  <title>Feed Image</title>
+	</head>
 
-<body>
-	{{> uploadImage}}
-	<br><br>
-	------------
-	<br><br>
-	{{> imagesView}}
-</body>
+	{{> yield}}
+
+</template>
