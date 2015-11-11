@@ -37,7 +37,7 @@ Template.carousel2.helpers({
 		if (this.isUploaded() && this.url()){
 			if (!carousel) carousel = $('#carousel');
 			carousel.slick('slickPause');
-			carousel.slick('slickAdd', '<div><img src="'+this.url()+'" height="20%" width="20%"></div>');
+			carousel.slick('slickAdd', '<div><img src="'+this.url({"store":"images"})+'" height="80%" width="80%"></div>');
 			carousel.slick('slickPlay');
 		}
 	}
