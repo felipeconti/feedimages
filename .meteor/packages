@@ -22,3 +22,4 @@ matb33:bootstrap-carousel
 iron:router
 shcherbin:slickjs
 cfs:graphicsmagick
+cfs:gridfs
