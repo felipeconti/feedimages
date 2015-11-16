@@ -1,4 +1,21 @@
 var carousel;
+var slides = [];
+
+Images.on('removed', function (file) {
+	console.log("Removed " + file._id + " from Images collection.");
+
+	var index = slides.indexOf(file.name());
+	if (index > -1){
+		if (!carousel) carousel = $('#carousel');
+
+		if (index == carousel.slick('slickCurrentSlide'))
+			carousel.slick('slickNext');
+
+		carousel.slick('slickPause');
+		carousel.slick('slickRemove', index);
+		carousel.slick('slickPlay');
+	}
+});
 
 Template.carousel2.onRendered(function () {
 	this.$('#carousel').slick({
@@ -22,14 +39,15 @@ Template.carousel2.events({
 		// console.dir(template);
 		// console.dir(currentSlide);
 		// console.dir(nextSlide);
-		console.log(slick.$slides[nextSlide].id);
-		var id = slick.$slides[nextSlide].id;
-		var img = Images.find(id);
-		if (img)
-			// console.dir(img)
-			console.log("Achou!")
-		else
-			console.log("Não achou!");
+
+		// console.log(slick.$slides[nextSlide].id);
+		// var id = slick.$slides[nextSlide].id;
+		// var img = Images.find(id);
+		// if (img)
+		// 	// console.dir(img)
+		// 	console.log("Achou!")
+		// else
+		// 	console.log("Não achou!");
 	}
 });
 
@@ -41,11 +59,10 @@ Template.carousel2.helpers({
 		if (this.isUploaded() && this.url()){
 			if (!carousel) carousel = $('#carousel');
 
-			// Images.update({_id: this._id}, {$set: {'metadata.index': carousel.slick('currentIndex')} })
+			slides.push(this.name());
 
 			carousel.slick('slickPause');
-			//carousel.slick('slickAdd', '<div><img id="'+this.name()+'" src="'+this.url({"store":"images"})+'" height="80%" width="80%"></div>');
-			carousel.slick('slickAdd', '<img id="'+this.name()+'" src="'+this.url({"store":"images"})+'" height="80%" width="80%">');
+			carousel.slick('slickAdd', '<div><img src="'+this.url({"store":"images"})+'" height="80%" width="80%"></div>');
 			carousel.slick('slickPlay');
 		}
 	}
